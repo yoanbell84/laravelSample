@@ -27,7 +27,7 @@ class UsersRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'confirmPassword' => 'required'
+            'confirmPassword' => 'required|same:password'
         ];
 
         return $rules;

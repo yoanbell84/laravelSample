@@ -26,8 +26,8 @@
       
     </div>
     <div class="form-group">
-        {!!Form::Label('status','Status')!!}
-        {!!Form::select('status', ['1' => 'Active', '0' => 'Not Active'], 1, ['class'=>'form-control'])!!}
+        {!!Form::Label('is_active','Status')!!}
+        {!!Form::select('is_active', ['1' => 'Active', '0' => 'Not Active'], 1, ['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
        {!!Form::Label('password','Password')!!}
@@ -44,8 +44,8 @@
         @endif
    </div>
     <div class="form-group">
-         {!!Form::Label('avatar','Avatar')!!}
-      {!!Form::file('avatar',['class'=>'form-control'])!!}
+         {!!Form::Label('phto_id','Avatar')!!}
+      {!!Form::file('photo_id',['class'=>'form-control'])!!}
     </div>
 <br>
    <div class="form-group">
