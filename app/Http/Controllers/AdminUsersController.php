@@ -7,6 +7,8 @@ use App\User;
 use App\Role;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
+use Illuminate\Routing\Redirector;
+
 
 class AdminUsersController extends Controller
 {
@@ -53,7 +55,8 @@ class AdminUsersController extends Controller
        
         $input['password'] = bcrypt($request->password);
         User::create($input);
-        return view('admin.users.index');
+        //  return view('admin.users.index');
+        return redirect()->route('users.index');
        
     }
 
