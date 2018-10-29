@@ -4,7 +4,14 @@
 @section('content')
 <h1>Users</h1>
 
+@if(Session::has('delete_user'))
 
+<div class='alert alert-dismissible alert-danger'>
+    
+    {{ session('delete_user')}}
+    
+</div> 
+@endif
 
 
  <table class="table table-bordered">
@@ -33,7 +40,8 @@
             <td>{{$user->role->name}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
             <td>{{$user->updated_at->diffForHumans()}}</td>
-            <td><a href="{{route('users.edit',$user->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" title="Edit User"></span></a> <a href="{{route('users.destroy',$user->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="Delete User"></span></a></td>
+            <td><a href="{{route('users.edit',$user->id)}}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" title="Edit User"></span></a> 
+                <a href="{{route('users.destroy',$user->id)}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove" title="Delete User"></span></a></td>
         </tr>
         @endforeach
         @endif

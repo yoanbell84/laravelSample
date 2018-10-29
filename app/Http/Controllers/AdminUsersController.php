@@ -9,6 +9,8 @@ use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
 use App\Photo;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Session; 
+
 
 
 class AdminUsersController extends Controller
@@ -46,7 +48,7 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
         
-        if($request->password ==''){
+        if(trim($request->password =='')){
             $input = $request->except('password');
         }else{
             $input = $request->all();
@@ -105,7 +107,7 @@ class AdminUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);  
-        if($request->password ==''){
+        if(trim($request->password =='')){
             $input = $request->except('password');
         }else{
             $input = $request->all();
@@ -132,7 +134,11 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
-        
-          return view('admin.users.destroy');
+        $user = User::findOrFail($id);
+        $name = $user->name;
+        unlink(public_path().$user->photo->file);
+        $user->delete();        
+        Session::flash('delete_user', 'The user '.$name.' has been deleted');
+        return redirect()->route('users.index');
     }
 }

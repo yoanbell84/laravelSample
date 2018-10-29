@@ -37,10 +37,10 @@
         @endif
    </div>
     <div class="form-group">
-       {!!Form::Label('confirmPassword','Confirm Password')!!}
-       {!!Form::password('confirmPassword',['class'=>'form-control'])!!}
-         @if ($errors->has('confirmPassword'))
-        <span class="text-danger">{{ $errors->first('confirmPassword') }}</span>
+       {!!Form::Label('password_confirmation','Confirm Password')!!}
+       {!!Form::password('password_confirmation',['class'=>'form-control'])!!}
+         @if ($errors->has('password_confirmation'))
+        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
         @endif
    </div>
     <div class="form-group">

@@ -13,4 +13,10 @@ class Photo extends Model
    public function getFileAttribute($photo){
        return $this->uploadDirectory.$photo;
    }
+   
+   public function post(){       
+       return $this->hasMany('App\Posts');
+   }
+   
+  
 }

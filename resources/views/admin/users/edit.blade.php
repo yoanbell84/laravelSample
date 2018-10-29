@@ -45,10 +45,10 @@
         @endif
    </div>
     <div class="form-group">
-       {!!Form::Label('confirmPassword','Confirm Password')!!}
-       {!!Form::password('confirmPassword',['class'=>'form-control'])!!}
-         @if ($errors->has('confirmPassword'))
-        <span class="text-danger">{{ $errors->first('confirmPassword') }}</span>
+       {!!Form::Label('password_confirmation','Confirm Password')!!}
+       {!!Form::password('password_confirmation',['class'=>'form-control'])!!}
+         @if ($errors->has('password_confirmation'))
+        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
         @endif
    </div>
     <div class="form-group">
@@ -56,13 +56,21 @@
       {!!Form::file('photo_id',['class'=>'form-control'])!!}
     </div>
 <br>
-   <div class="form-group">
-        {!!Form::submit('Update User',['class'=>'btn btn-primary'])!!}
-   </div>
-
-    {!! Form::close() !!}
-    
-
+   
+    <div class="row col-sm-9">
+        <div class="col-sm-3"> 
+            <div class="form-group">
+            {!!Form::submit('Update User',['class'=>'btn btn-primary pull-left'])!!}
+            </div>            
+        </div>
+          {!! Form::close() !!}
+        <div class="col-sm-3">
+            {!!Form::open(['method'=>'DELETE','action' => ['AdminUsersController@destroy',$user->id]])!!}
+            {!!Form::submit('Delete User',['class'=>'btn btn-danger'])!!}
+            {!! Form::close() !!}
+        </div>
+    </div>
+  
 
         
 </div>
