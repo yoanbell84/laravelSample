@@ -5,11 +5,18 @@
 <h1>Posts</h1>
 
 @if(Session::has('delete_post'))
-
 <div class='alert alert-dismissible alert-danger'>
-    
     {{ session('delete_post')}}
-    
+</div> 
+@endif
+@if(Session::has('edited_post'))
+<div class='alert alert-dismissible alert-success'>
+    {{ session('edited_post')}}   
+</div> 
+@endif
+@if( Session::has('created_post') )
+<div class='alert alert-dismissible alert-success'>
+    {{ session('created_post')}}   
 </div> 
 @endif
 
@@ -20,6 +27,7 @@
         <th>id</th>       
         <th>Photo</th>
          <th>Author</th>
+         <th>Category</th>
         <th>Title</th>
         <th>Body</th>
         <th>Created</th>
@@ -34,6 +42,7 @@
             <td>{{$post->id}}</td>           
             <td><img height="50" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt=""></td>
             <td>{{$post->user->name}}</td>
+            <td>{{$post->category->name}}</td>
             <td><a href="{{route('posts.edit',$post->id)}}">{{$post->title}}</a></td>         
             <td>{{$post->body}}</td>
             <td>{{$post->created_at->diffForHumans()}}</td>

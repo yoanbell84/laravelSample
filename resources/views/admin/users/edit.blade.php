@@ -12,7 +12,7 @@
     
         @include('admin.includes.formErrors')
 
-{!! Form::model($user,['method'=>'PATCH','action' => ['AdminUsersController@update',$user->id] , 'files' => true]) !!} 
+{!! Form::model($user,['method'=>'PATCH','action' => ['AdminUserController@update',$user->id] , 'files' => true]) !!} 
    
    <div class="form-group">
        {!!Form::Label('name','Name')!!}
@@ -65,7 +65,7 @@
         </div>
           {!! Form::close() !!}
         <div class="col-sm-3">
-            {!!Form::open(['method'=>'DELETE','action' => ['AdminUsersController@destroy',$user->id]])!!}
+            {!!Form::open(['method'=>'DELETE','action' => ['AdminUserController@destroy',$user->id]])!!}
             {!!Form::submit('Delete User',['class'=>'btn btn-danger'])!!}
             {!! Form::close() !!}
         </div>
