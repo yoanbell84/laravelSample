@@ -23,7 +23,7 @@
    </div>
     <div class="form-group">
        {!!Form::Label('category_id','Category')!!}
-      {!!Form::select('category_id', $categories , null , ['class'=>'form-control'])!!}
+      {!!Form::select('category_id', $categories , null , ['class'=>'form-control' , 'placeholder'=>'Chose a category'])!!}
          @if ($errors->has('category_id'))
         <span class="text-danger">{{ $errors->first('category') }}</span>
         @endif
