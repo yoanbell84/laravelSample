@@ -102,7 +102,7 @@ class AdminPostController extends Controller
     {
         //
         
-        $post = Post::findOrFail($id);
+        //$post = Post::findOrFail($id);
         $input = $request->all();
         if($file = $request->file('photo_id')){
             $name =time().$file->getClientOriginalName();
@@ -110,9 +110,11 @@ class AdminPostController extends Controller
             $photo = Photo::create(['file'=> $name]); 
             $input['photo_id'] = $photo->id;        
         }
-        $input['user_id'] = Auth::user()->id;
-      
-        $post->update($input);
+        //$input['user_id'] = Auth::user()->id;
+        //$post->update($input);
+         
+        Auth::user()->posts()->whereId($id)->first()->update($input);     
+       
         Session::flash('edited_post', 'The post '.$input['title'].' has been edited');
         return redirect()->route('posts.index'); 
         
@@ -128,6 +130,7 @@ class AdminPostController extends Controller
     {
         $post = Post::findOrFail($id);
         $name = $post->title;
+        if($post->photo)
         unlink(public_path().$post->photo->file);
         $post->delete();        
         Session::flash('delete_post', 'The post '.$name.' has been deleted');
