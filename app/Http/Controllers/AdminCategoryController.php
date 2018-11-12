@@ -81,8 +81,7 @@ class AdminCategoryController extends Controller
     {
         //
         $category = Category::findOrFail($id);
-        $category->name = $request->name;
-        $category->update();
+        $category->update($request->all());
         Session::flash('edited_category', 'The category '.$category->name.' has been edited');
         return redirect()->route('categories.index'); 
     }

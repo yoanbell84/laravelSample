@@ -5,17 +5,17 @@
 <h1>Categories</h1>
 
 
-@if(Session::has('delete_post'))
+@if(Session::has('deleted_category'))
 <div class='alert alert-dismissible alert-danger'>
     {{ session('deleted_category')}}
 </div> 
 @endif
-@if(Session::has('edited_post'))
+@if(Session::has('edited_category'))
 <div class='alert alert-dismissible alert-success'>
     {{ session('edited_category')}}   
 </div> 
 @endif
-@if( Session::has('created_post') )
+@if( Session::has('created_category') )
 <div class='alert alert-dismissible alert-success'>
     {{ session('created_category')}}   
 </div> 
