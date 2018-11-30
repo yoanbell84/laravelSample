@@ -17,12 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post/{id}','AdminPostController@post')->name('home.post');
 
 Route::group(['middleware'=>'admin'], function(){
     Route::resource('/admin/users','AdminUserController');
     Route::get('/admin' , function(){return view('admin.index'); })->name('adminDashBoard');
     Route::resource('/admin/posts','AdminPostController');
-     Route::resource('/admin/categories','AdminCategoryController');
+    Route::resource('/admin/categories','AdminCategoryController');
+    Route::resource('/admin/media','AdminMediaController');
+    Route::resource('/admin/comments','PostCommentsController');
+    Route::resource('/admin/comment/replies','CommentRepliesController');
 });
 
 

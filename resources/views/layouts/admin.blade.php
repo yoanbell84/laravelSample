@@ -14,8 +14,9 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    
+    @yield('styles')
 
 </head>
 
@@ -24,7 +25,7 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-laravel" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -85,7 +86,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{route('adminDashBoard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
@@ -113,6 +114,9 @@
                             <li>
                                 <a href="{{route('posts.create')}}">Create Post</a>
                             </li>
+                            <li>
+                                <a href="{{route('comments.index')}}">All Comments</a>
+                            </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
@@ -123,7 +127,7 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('categories.index')}}">All Categories</a>
+                                <a href="{{route('categories.index')}}">Categories</a>
                             </li>
 
                            <!-- <li>
@@ -139,22 +143,18 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{route('media.index')}}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{route('media.create')}}">Upload Media</a>
                             </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
-
-
-
-
-
-
+                    </li>                
+                    
+                   
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -284,7 +284,7 @@
 <!-- jQuery -->
 <script src="{{asset('js/app.js')}}"></script>
 
-
+@yield('scripts')
 @yield('footer')
 
 
